@@ -14,10 +14,22 @@ import java.util.Map;
     The ATM will start up by checking if ATMData.fer exists. If not, create directory to ATMData.fer
     
 */
+/**
+ * The main(hash) handler that saves information to a file, and attempts to retrieve it.
+ * <p>
+ * If a file (ATMData.fer) is not created at the source, then a new Hashmap will be made.
+ * Otherwise, the program will retrieve the file and create the Hashmap from its contents.
+ * Afterwards, the Hashmap can be edited, and then saved into the file.
+ * 
+ * @version %I%
+ */
 public class CredentialsList {
-    private static Map<String, Credentials> idList; // = new HashMap<>(999);
+    private static Map<String, Credentials> idList;
     private static File atmData;
     
+    /**
+     * Generate a new HashMap and file ATMData.&fer, or find it if one exists.
+     */
     public static void start() {
         atmData = new File("ATMData.fer");
         if(atmData.exists()) {
@@ -33,6 +45,9 @@ public class CredentialsList {
         }
     }
     
+    /**
+     * Called by <b>CredentialsList.start</b> if file was found.<p>Reads file into idList HashMap.
+     */
     private static void createHashmap() {
         try {
             FileInputStream fis = new FileInputStream(atmData);
@@ -48,6 +63,9 @@ public class CredentialsList {
         }
     }
     
+    /**
+     * If the key field is inside idList HashMap, it will print that field's node to console.
+     */
     public static void read(String key) {
         if(idList.containsKey(key)) {
             Credentials currentAccount = idList.get(key);
@@ -55,6 +73,9 @@ public class CredentialsList {
         }
     }
     
+    /**
+     * Saves the HashMap into file to be called in the future.
+     */
     public static void save() {
         try {
             FileOutputStream fileOut = new FileOutputStream(atmData);
@@ -68,6 +89,9 @@ public class CredentialsList {
         }
     }
     
+    /**
+     * If the key field doesn't exist, then create the new node in the idList Hashmap.
+     */
     public static boolean createNewID(String id, String pin) {
         if(!idList.containsKey(id)) {
             idList.put(id, new Credentials(id, pin));
