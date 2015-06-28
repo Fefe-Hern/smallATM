@@ -12,7 +12,6 @@ import java.util.Map;
 
 /*
     The ATM will start up by checking if ATMData.fer exists. If not, create directory to ATMData.fer
-    
 */
 /**
  * The main(hash) handler that saves information to a file, and attempts to retrieve it.
