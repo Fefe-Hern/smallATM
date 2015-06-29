@@ -27,9 +27,9 @@ public class CredentialsList {
     private static File atmData;
     
     /**
-     * Generate a new HashMap and file ATMData.&fer, or find it if one exists.
+     * Generate a new HashMap and file ATMData.fer, or find it if one exists.
      */
-    public static void start() {
+    public static void loadFile() {
         atmData = new File("ATMData.fer");
         if(atmData.exists()) {
             createHashmap();
