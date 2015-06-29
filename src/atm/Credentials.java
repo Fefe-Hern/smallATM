@@ -2,6 +2,9 @@ package atm;
 
 import java.io.Serializable;
 
+/**
+ * Node for typical bank-like accounts.
+ */
 public class Credentials implements Serializable{
     private String id; // Key Field
     private String pin;
