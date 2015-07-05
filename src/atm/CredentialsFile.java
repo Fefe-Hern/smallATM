@@ -22,7 +22,7 @@ import java.util.Map;
  * 
  * @version %I%
  */
-public class CredentialsList {
+public class CredentialsFile {
     private static Map<String, Credentials> idList;
     private static File atmData;
     
@@ -94,6 +94,38 @@ public class CredentialsList {
     public static boolean createNewID(String id, String pin) {
         if(!idList.containsKey(id)) {
             idList.put(id, new Credentials(id, pin));
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Searches for the credentials with key field ID, then returns it. Returns null otherwise.
+     */
+    public static Credentials fetchID(String id) {
+        if(idList.containsKey(id)) {
+            return idList.get(id).deepCopy();
+        }
+        return null;
+    }
+    
+    /**
+     * If the HashMap contains the ID, replace the value with the specified account's value.
+     */
+    public static boolean updateID(Credentials account) {
+        if(idList.containsKey(account.getId())) {
+            idList.put(account.getId(), account);
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * If the Hashmap contains the ID specified, remove it.
+     */
+    public static boolean deleteID(Credentials account) {
+        if(idList.containsKey(account.getId())) {
+            idList.remove(account.getId());
             return true;
         }
         return false;

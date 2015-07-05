@@ -1,5 +1,7 @@
 package atm;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,10 +32,31 @@ public class Login {
         JTextField idTextField = new JTextField(4);
         JButton loginButton = new JButton("Log In");
         JButton createAccountButton = new JButton("Create ID");
+        createActionListeners(loginButton, createAccountButton);
         panel.add(idLabel);
         panel.add(idTextField);
         panel.add(loginButton);
         panel.add(createAccountButton);
         return panel;
+    }
+
+    private static void createActionListeners(JButton loginButton, JButton createAccountButton) {
+        loginButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        
+        });
+        
+        createAccountButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        
+        });
     }
 }

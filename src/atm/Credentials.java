@@ -15,6 +15,12 @@ public class Credentials implements Serializable{
         this.pin = pin;
         this.balance = 0;
     }
+    
+    private Credentials(String id, String pin, int balance) {
+        this.id = id;
+        this.pin = pin;
+        this.balance = balance;
+    }
 
     @Override
     public String toString() {
@@ -41,5 +47,7 @@ public class Credentials implements Serializable{
         this.balance = balance;
     }
     
-    
+    public Credentials deepCopy() {
+        return new Credentials(this.id, this.pin, this.balance);
+    }
 }
